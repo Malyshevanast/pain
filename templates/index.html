@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h2 style="text-align: center">НАШИ УСЛУГИ</h2>
+    {% for info in service %}
+    <ul>
+        <a style="font-size: 20px ;" href="/info/{{ info }}">Платная услуга: {{ info }}</a>
+    </ul>
+    {% endfor %}
+    <div style="text-align: center">
+        <img style="height: auto; width: 30%; margin-top: 20px;" src="{% static 'images/4.jpg' %}"/>
+    </div>
+{% endblock %}

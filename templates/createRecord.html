@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if record.count > 0 %}
+        <h2>Запись</h2>
+        <table>
+            <thead><th>Id</th><th>Клиент</th><th>Направление</th><th>Услуга</th><th>Цена</th><th>Дата</th><th>Время</th></thead>
+            {% for record in record %}
+            <tr>
+                <td>{{ record.id }}</td>
+                <td>{{ record.client }}</td>
+                <td>{{ record.direction }}</td>
+                <td>{{ record.provider }}</td>
+                <td>{{ record.price }}</td>
+                <td>{{ record.data }}</td>
+                <td>{{ record.time }}</td>
+                <td><a href="/account/editRecord/{{record.id}}">Изменить</a> | <a href="/account/deleteRecord/{{record.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
+{% endblock content %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Городская больница</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+{% include 'header.html' %}
+<main>
+    {% block content %}{% endblock %}
+</main>
+{% include 'footer.html' %}
+</body>
+</html>

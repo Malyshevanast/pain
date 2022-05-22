@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if feedback.count > 0 %}
+        <h2>Ваш отзыв очень важен для нас =)</h2>
+        <table>
+            <thead><th>Id</th><th>Клиент</th><th>Текст</th><th>Дата создания</th><th>Дата изменения</th><th>Услуга</th></thead>
+            {% for feedback in feedback %}
+            <tr>
+                <td>{{ feedback.id }}</td>
+                <td>{{ feedback.client }}</td>
+                <td>{{ feedback.text }}</td>
+                <td>{{ feedback.time_create }}</td>
+                <td>{{ feedback.time_update }}</td>
+                <td>{{ feedback.provider }}</td>
+                <td><a href="/account/editFeedback/{{feedback.id}}">Изменить</a> | <a href="/account/deleteFeedback/{{feedback.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
+{% endblock content %}

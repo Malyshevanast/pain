@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h4 style="padding-top: 15px;">№{{ record }}</h4>
+    <p>Вид: {{ view }}</p>
+    <p>Подразделение: {{ nap }}</p>
+    {% if view == "Консультация" %}
+        <p>Стоимость процедуры: {{ cost_o }}</p>
+    {% else %}
+        <p>Стоимость процедуры: {{  cost_t }}</p>
+    {% endif %}
+    <div>
+        <p>На данный момент функция "Запись на прием" онлайн недоступна, запишитесь через "Портал государственных услуг Российской Федерации", приносим свои извинения(</p>
+    </div>
+    
+    <div style=" text-align: center;">
+        <img style="height: auto; width: 40%; margin-top: 5px; " src="{% static 'images/2.jpg' %}" />
+    </div>
+{% endblock %}
+    

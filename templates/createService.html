@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content%}
+{% csrf_token %}
+<form method="post" class="form">
+    <table>
+        {% csrf_token %}
+        {{ form }}
+    </table>
+    <button type="submit">Добавить</button>
+</form>
+{% if service.count > 0 %}
+<h2>Услуга</h2>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Услуга</th>
+        <th>Ведущий доктор</th>
+        <th>Описание</th>
+    </thead>
+    {% for service in service %}
+    <tr>
+        <td>{{ service.id }}</td>
+        <td>{{ service.provider }}</td>
+        <td>{{ service.doctor }}</td>
+        <td>{{ service.text }}</td>
+    </tr>
+    <td><a href="/account/editService/{{service.id}}">Изменить</a> | <a href="/account/deleteService/{{service.id}}">Удалить</a></td>
+    {% endfor %}
+</table>
+
+{% endif %}
+{% endblock content %}

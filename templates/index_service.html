@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <p style="padding-top: 15px;">Направление №{{ number }}</p>
+    <p>Подразделение: {{ detail }}</p>
+    <p>Адрес корпуса: {{ address }}</p>
+
+    <p>Скорее записывайся!</p>
+    {% for record in record %}
+        <a href='/record/{{ record.id }}' style="margin-left: 20px;">Запись на прием {{ record.id }}</a>
+    {% endfor %}
+    <div style="align-content: center">
+        <img style="height: auto; width: 20%; margin-top: 5px; margin-left: 20px; " src="{% static 'images/3.jpg' %}" />
+    </div>
+{% endblock %}
