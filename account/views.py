@@ -50,7 +50,7 @@ def deleteUser(request, id):
 
 
 # ЗАПИСЬ
-#Создание.Вывод записей   
+#Создание записи    
 def createRecord (request):
     if request.method == "POST":
         form = RecordForm(request.POST)
@@ -128,7 +128,7 @@ def deleteService(request, id):
     
     
 # ОТЗЫВЫ
-#Создание отзывы
+#Создание отзыва
 def createFeedback (request):
     if request.method == "POST":
         form = FeedbackForm(request.POST)
