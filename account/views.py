@@ -50,7 +50,7 @@ def deleteUser(request, id):
 
 
 # ЗАПИСЬ
-#Направление (создание и вывод)    
+#Создание.Вывод записей   
 def createRecord (request):
     if request.method == "POST":
         form = RecordForm(request.POST)
@@ -61,7 +61,7 @@ def createRecord (request):
     record = Record.objects.all()
     return render(request, "createRecord.html", {"form": form, "record": record})    
 
-#Редактирование направления
+#Редактирование записи
 def editRecord(request, id):
     try:
         record = Record.objects.get(id=id)
@@ -80,7 +80,7 @@ def editRecord(request, id):
     except Record.DoesNotExist:
         return HttpResponseNotFound("<h2>Record not found</h2>")
 
-#Удаление направления
+#Удаление записи
 def deleteRecord(request, id):
     try:
         record = Record.objects.get(id=id)
@@ -89,8 +89,8 @@ def deleteRecord(request, id):
     except Record.DoesNotExist:
         return HttpResponseNotFound("<h2>Record not found</h2>")    
     
-# ТУР
-#Создание тура
+# УСЛУГА
+#Создание услуги
 def createService (request):
     if request.method == "POST":
         form = ServiceForm(request.POST)
@@ -101,13 +101,12 @@ def createService (request):
     service = Service.objects.all()
     return render(request, "createService.html", {"form": form, "service": service})
 
-#Редактирование тура
+#Редактирование услуги
 def editService(request, id):
     try:
         service = Service.objects.get(id=id)
         if request.method == "POST":
             form = ServiceForm()
-            # tour.direction = request.POST.get("direction")
             service.doctor = request.POST.get("doctor")
             service.text = request.POST.get("text")
             service.save()
@@ -118,7 +117,7 @@ def editService(request, id):
     except Service.DoesNotExist:
         return HttpResponseNotFound("<h2>Service not found</h2>")
 
-#Удаление тура
+#Удаление услуги
 def deleteService(request, id):
     try:
         service = Service.objects.get(id=id)
