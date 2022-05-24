@@ -19,6 +19,8 @@ class Record(models.Model):
     
 class Card(models.Model):
     client = models.OneToOneField(User, on_delete = models.CASCADE)
+    policy = models.CharField(max_length=25)
+    disease = models.CharField(max_length=250)
    
 class Service(models.Model):
     providers = models.ManyToManyField(Record)
