@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content%}
+{% csrf_token %}
+    <form method="post" class="form">
+        <table>
+            {% csrf_token %}
+            {{ form }}
+        </table>
+        <button type="submit">Добавить</button>
+    </form>
+    {% if card.count > 0 %}
+        <h2>Карта</h2>
+        <table>
+            <thead><th>Id</th><th>Клиент</th><th>Полис</th><th>Болезни</th></thead>
+            {% for card in card %}
+            <tr>
+                <td>{{ card.id }}</td>
+                <td>{{ card.client }}</td>
+                <td>{{ card.policy }}</td>
+                <td>{{ card.bobo }}</td>
+                <td><a href="/account/editCard/{{card.id}}">Изменить</a> | <a href="/account/deleteCard/{{card.id}}">Удалить</a></td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% endif %}    
+{% endblock content %}

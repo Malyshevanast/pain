@@ -1,4 +1,5 @@
 from cgitb import text
+from email import policy
 from http import client
 from turtle import title
 from django.db import models
@@ -19,9 +20,9 @@ class Record(models.Model):
     
 class Card(models.Model):
     client = models.OneToOneField(User, on_delete = models.CASCADE)
-    policy = models.CharField(max_length=25)
-    disease = models.CharField(max_length=250)
-   
+    policy = models.CharField(max_length=20)
+    bobo = models.CharField(max_length=20)
+      
 class Service(models.Model):
     providers = models.ManyToManyField(Record)
     doctor = models.CharField(max_length=50)

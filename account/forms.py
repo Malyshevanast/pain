@@ -18,7 +18,14 @@ class FeedbackForm(forms.ModelForm):
         model = Feedback
         fields = '__all__'
 
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = '__all__'
+
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = ['doctor', 'text']
+    providers = forms.ModelMultipleChoiceField(queryset=Record.objects.all(), widget=forms.CheckboxSelectMultiple)
+

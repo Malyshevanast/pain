@@ -19,6 +19,10 @@ urlpatterns = [
     path('editService/<int:id>/', editService),
     path('deleteService/<int:id>/', deleteService),
     
+    path('createCard/', createCard),
+    path('editCard/<int:id>/', editCard),
+    path('deleteCard/<int:id>/', deleteCard),
+    
     
     path('', account),
 ]

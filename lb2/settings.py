@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'lb2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hospi',
+        'NAME': 'pop',
         'USER': 'postgres',
         'PASSWORD': '135y79privet',
         'HOST': 'localhost',

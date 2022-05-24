@@ -28,7 +28,6 @@ def editUser(request, id):
             user.last_name = request.POST.get("last_name")
             user.patronymic = request.POST.get("patronymic")
             user.phone = request.POST.get("phone")
-            # user.purchased_tour = request.POST.get("purchased_tour")
             user.save()
             return HttpResponseRedirect("/")
         else:
@@ -123,7 +122,7 @@ def deleteService(request, id):
         service = Service.objects.get(id=id)
         service.delete()
         return HttpResponseRedirect("/")
-    except User.DoesNotExist:
+    except Service.DoesNotExist:
         return HttpResponseNotFound("<h2>Service not found</h2>")
     
     
@@ -168,3 +167,39 @@ def deleteFeedback(request, id):
     except User.DoesNotExist:
         return HttpResponseNotFound("<h2>Feedback not found</h2>")    
     
+# Карта
+#Создание карты
+def createCard (request):
+    if request.method == "POST":
+        form = CardForm(request.POST)
+        if form.is_valid():
+            Card.objects.create(**form.cleaned_data)
+    else:
+        form = CardForm()
+    сard = Card.objects.all()
+    return render(request, "createCard.html", {"form": form, "сard":сard})
+
+#Редактирование карты
+def editCard(request, id):
+    try:
+        сard = Card.objects.get(id=id)
+        if request.method == "POST":
+            form = CardForm()
+            сard.policy = request.POST.get("policy")
+            сard.bobo = request.POST.get("bobo")
+            сard.save()
+            return HttpResponseRedirect("/")
+        else:
+            form = CardForm() 
+            return render(request, "editCard.html", {"form": form, "сard": сard})
+    except Card.DoesNotExist:
+        return HttpResponseNotFound("<h2>сard not found</h2>")
+
+#Удаление карты
+def deleteCard(request, id):
+    try:
+        сard = Card.objects.get(id=id)
+        сard.delete()
+        return HttpResponseRedirect("/")
+    except User.DoesNotExist:
+        return HttpResponseNotFound("<h2>сard not found</h2>")
