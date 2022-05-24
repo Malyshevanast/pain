@@ -9,7 +9,6 @@ class User(models.Model):
     patronymic = models.CharField(max_length=50)
     phone = models.CharField(max_length=12)
 
-
 class Record(models.Model):
     client = models.ForeignKey(User, on_delete = models.CASCADE)
     direction = models.CharField(max_length=50)
@@ -17,14 +16,15 @@ class Record(models.Model):
     price = models.CharField(max_length=20)
     data = models.DateField()
     time = models.TimeField()
-
-
+    
+class Card(models.Model):
+    client = models.OneToOneField(User, on_delete = models.CASCADE)
+   
 class Service(models.Model):
-    provider = models.ForeignKey(Record, on_delete = models.CASCADE)
+    providers = models.ManyToManyField(Record)
     doctor = models.CharField(max_length=50)
     text = models.TextField()
-    
-  
+       
 class Feedback(models.Model):
     client = models.ForeignKey(User, on_delete = models.CASCADE)
     text = models.TextField()

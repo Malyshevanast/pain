@@ -21,4 +21,4 @@ class FeedbackForm(forms.ModelForm):
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = Service
-        fields = '__all__'
+        fields = ['doctor', 'text']
